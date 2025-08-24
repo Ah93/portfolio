@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Ahmed Sheikh</title>
-    
+
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -36,7 +37,7 @@
             --text-primary: #212529;
             --text-secondary: #6c757d;
             --border-color: #dee2e6;
-            --shadow: rgba(0,0,0,0.1);
+            --shadow: rgba(0, 0, 0, 0.1);
         }
 
         [data-theme="dark"] {
@@ -45,7 +46,7 @@
             --text-primary: #ffffff;
             --text-secondary: #adb5bd;
             --border-color: #495057;
-            --shadow: rgba(255,255,255,0.1);
+            --shadow: rgba(255, 255, 255, 0.1);
         }
 
         body {
@@ -88,22 +89,18 @@
             box-shadow: 0 20px 40px var(--shadow);
         }
 
-        .project-card {
-            transition: var(--transition-smooth);
-        }
-
-        .project-card:hover {
-            transform: scale(1.05) rotateY(5deg);
-        }
-
         /* Animations */
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         .fade-in {
@@ -119,11 +116,322 @@
             }
         }
 
+        /* Enhanced Creative Animations */
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-rotate-in {
+            animation: rotateIn 0.8s ease-out forwards;
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        .animate-bounce-in {
+            animation: bounceIn 0.8s ease-out forwards;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Particle Effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(102, 126, 234, 0.05) 100%);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.15);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(102, 126, 234, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-gradient);
+        }
+
+        .project-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-icon::after {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+
+        .project-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .tech-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Enhanced Hero Section */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        /* Enhanced Buttons */
+        .btn-gradient {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-gradient:hover::before {
+            left: 100%;
+        }
+
+        .btn-gradient:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Ensure demo links are clickable */
+        .project-card .btn {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .project-card .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Enhanced Contact Section Styling */
+        .contact-link {
+            transition: var(--transition-fast);
+            border: 1px solid transparent;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-color);
+            background: rgba(102, 126, 234, 0.1);
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.15);
+        }
+
+        .contact-link:hover h6 {
+            color: #667eea;
+        }
+
         /* Navigation */
         .navbar-custom {
             background-color: rgba(var(--bg-secondary-rgb), 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: left 0.5s ease;
+        }
+
+        .navbar-custom:hover::before {
+            left: 0;
         }
 
         .nav-link-custom {
@@ -143,20 +451,13 @@
             color: white !important;
         }
 
+        /* Ensure navbar brand is always visible */
+        .navbar-brand {
+            color: var(--text-primary) !important;
+            font-weight: 700;
+        }
+
         /* Buttons */
-        .btn-gradient {
-            background: var(--primary-gradient);
-            border: none;
-            color: white;
-            transition: var(--transition-fast);
-        }
-
-        .btn-gradient:hover {
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-
         .btn-outline-gradient {
             border: 2px solid #667eea;
             color: #667eea;
@@ -210,10 +511,23 @@
         }
 
         /* RTL Support */
-        [dir="rtl"] .ms-3 { margin-left: 0 !important; margin-right: 1rem !important; }
-        [dir="rtl"] .me-3 { margin-right: 0 !important; margin-left: 1rem !important; }
-        [dir="rtl"] .text-start { text-align: right !important; }
-        [dir="rtl"] .text-end { text-align: left !important; }
+        [dir="rtl"] .ms-3 {
+            margin-left: 0 !important;
+            margin-right: 1rem !important;
+        }
+
+        [dir="rtl"] .me-3 {
+            margin-right: 0 !important;
+            margin-left: 1rem !important;
+        }
+
+        [dir="rtl"] .text-start {
+            text-align: right !important;
+        }
+
+        [dir="rtl"] .text-end {
+            text-align: left !important;
+        }
 
         /* Dark theme specific styles */
         [data-theme="dark"] {
@@ -224,25 +538,96 @@
             --bg-secondary-rgb: 255, 255, 255;
         }
 
+        /* Custom Cursor Effect */
+        .cursor-glow {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: screen;
+        }
+
+        /* Enhanced Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border-radius: 2rem;
+            padding: 0.5rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+        }
+
+        .mobile-nav-btn {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            margin: 0 0.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .mobile-nav-btn.active::before {
+            left: 0;
+        }
+
+        .mobile-nav-btn.active {
+            color: white;
+            transform: scale(1.1);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero-text {
                 font-size: 2.5rem !important;
             }
-            
+
             .display-1 {
                 font-size: 2rem !important;
             }
-		
+
+            .floating-element {
+                display: none;
+            }
+
+            .particle {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body data-theme="light">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
             <div class="d-flex align-items-center">
-                <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center me-3"
+                    style="width: 40px; height: 40px;">
                     <span class="text-white fw-bold">AS</span>
                 </div>
                 <span class="navbar-brand fw-bold mb-0 h1">Ahmed Sheikh</span>
@@ -251,16 +636,20 @@
             <div class="d-none d-md-flex align-items-center">
                 <div class="nav-links me-4">
                     <button class="nav-link-custom active" onclick="showSection('home')" data-section="home">
-                        <i class="fas fa-home me-2"></i><span class="nav-text" data-en="Home" data-ar="الرئيسية">Home</span>
+                        <i class="fas fa-home me-2"></i><span class="nav-text" data-en="Home"
+                            data-ar="الرئيسية">Home</span>
                     </button>
                     <button class="nav-link-custom" onclick="showSection('about')" data-section="about">
-                        <i class="fas fa-user me-2"></i><span class="nav-text" data-en="About" data-ar="نبذة عني">About</span>
+                        <i class="fas fa-user me-2"></i><span class="nav-text" data-en="About"
+                            data-ar="نبذة عني">About</span>
                     </button>
                     <button class="nav-link-custom" onclick="showSection('portfolio')" data-section="portfolio">
-                        <i class="fas fa-briefcase me-2"></i><span class="nav-text" data-en="Portfolio" data-ar="الأعمال">Portfolio</span>
+                        <i class="fas fa-briefcase me-2"></i><span class="nav-text" data-en="Portfolio"
+                            data-ar="الأعمال">Portfolio</span>
                     </button>
                     <button class="nav-link-custom" onclick="showSection('contact')" data-section="contact">
-                        <i class="fas fa-envelope me-2"></i><span class="nav-text" data-en="Contact" data-ar="التواصل">Contact</span>
+                        <i class="fas fa-envelope me-2"></i><span class="nav-text" data-en="Contact"
+                            data-ar="التواصل">Contact</span>
                     </button>
                 </div>
 
@@ -275,25 +664,44 @@
     </nav>
 
     <!-- Home Section -->
-    <section id="home" class="section active">
+    <section id="home" class="section active hero-section">
+        <!-- Floating Elements -->
+        <div class="floating-element">
+            <i class="fas fa-code" style="font-size: 3rem; color: #667eea;"></i>
+        </div>
+        <div class="floating-element">
+            <i class="fas fa-brain" style="font-size: 2.5rem; color: #764ba2;"></i>
+        </div>
+        <div class="floating-element">
+            <i class="fas fa-robot" style="font-size: 2rem; color: #667eea;"></i>
+        </div>
+        
         <div class="container py-5">
             <div class="row justify-content-center text-center">
                 <div class="col-lg-8">
                     <div class="animate-float mb-4">
-                        <div class="rounded-circle mx-auto mb-4 overflow-hidden" style="width: 128px; height: 128px;">
-							<img src="Ahmed_93.jpg" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover;">
-						</div>
-
+                        <div class="rounded-circle mx-auto mb-4 overflow-hidden animate-scale-in" style="width: 128px; height: 128px;">
+                            <img src="Ahmed_93.jpg" alt="Profile Photo"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
                     </div>
-                    <h1 class="display-1 fw-bold hero-text mb-4" data-en="Welcome to My Portfolio" data-ar="مرحباً بك في معرض أعمالي">Welcome to My Portfolio</h1>
-                    <p class="fs-2 text-secondary mb-4" data-en="Machine Learning Engineer & Software Developer Developer" data-ar="مهندس تعلم آلي ومطوّر برمجيات">Machine Learning Engineer & Software Developer</p>
-                    <p class="fs-5 text-secondary mb-5" data-en="Passionate about creating beautiful, functional, and user-centered digital experiences." data-ar="
-شغوف ببناء تطبيقات ذكاء اصطناعي ذكية قابلة للتوسع ومركزة على المستخدم، لحل مشكلات واقعية.">Passionate about building intelligent, scalable, and user-focused AI applications that solve real-world problems.</p>
-                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
-                        <button class="btn btn-gradient btn-lg px-4 py-3 rounded-pill" onclick="showSection('portfolio')">
+                    <h1 class="display-1 fw-bold hero-text mb-4 animate-slide-up" data-en="Welcome to My Portfolio"
+                        data-ar="مرحباً بك في معرض أعمالي">Welcome to My Portfolio</h1>
+                    <p class="fs-2 text-secondary mb-4 animate-slide-up" style="animation-delay: 0.2s;"
+                        data-en="Machine Learning Engineer & Software Developer Developer"
+                        data-ar="مهندس تعلم آلي ومطوّر برمجيات">Machine Learning Engineer & Software Developer</p>
+                    <p class="fs-5 text-secondary mb-5 animate-slide-up" style="animation-delay: 0.4s;"
+                        data-en="Passionate about creating beautiful, functional, and user-centered digital experiences."
+                        data-ar="
+شغوف ببناء تطبيقات ذكاء اصطناعي ذكية قابلة للتوسع ومركزة على المستخدم، لحل مشكلات واقعية.">Passionate about building
+                        intelligent, scalable, and user-focused AI applications that solve real-world problems.</p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 animate-slide-up" style="animation-delay: 0.6s;">
+                        <button class="btn btn-gradient btn-lg px-4 py-3 rounded-pill"
+                            onclick="showSection('portfolio')">
                             <i class="fas fa-briefcase me-2"></i>View My Work
                         </button>
-                        <button class="btn btn-outline-gradient btn-lg px-4 py-3 rounded-pill" onclick="showSection('contact')">
+                        <button class="btn btn-outline-gradient btn-lg px-4 py-3 rounded-pill"
+                            onclick="showSection('contact')">
                             <i class="fas fa-envelope me-2"></i>Get In Touch
                         </button>
                     </div>
@@ -307,41 +715,52 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="text-center mb-5">
+                    <div class="text-center mb-5 animate-slide-up">
                         <h2 class="display-2 fw-bold hero-text mb-4" data-en="About Me" data-ar="نبذة عني">About Me</h2>
                         <div class="bg-gradient rounded mx-auto" style="width: 96px; height: 4px;"></div>
                     </div>
-                    <div class="card-custom rounded-4 p-5 shadow-lg card-hover">
+                    <div class="card-custom rounded-4 p-5 shadow-lg card-hover animate-scale-in">
                         <div class="row align-items-center">
                             <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                                <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center mx-auto animate-float" style="width: 256px; height: 256px;">
-                                    <i class="fas fa-code text-white" style="font-size: 6rem;"></i>
+                                <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center mx-auto animate-float"
+                                    style="width: 256px; height: 256px;">
+                                    <i class="fas fa-brain text-white" style="font-size: 6rem;"></i>
                                 </div>
                             </div>
                             <div class="col-lg-8">
-                                <p class="fs-5 text-secondary lh-lg mb-4" data-en="Machine Learning Engineer and Software Developer skilled in deep learning, NLP, and computer vision. Experienced in building end-to-end AI systems, deploying models with TensorFlow/PyTorch, and contributing to academic research and full-stack integration." data-ar="مهندس تعلم آلي ومطوّر برمجيات ماهر في التعلم العميق، ومعالجة اللغة الطبيعية، ورؤية الحاسوب. يتمتع بخبرة في بناء أنظمة ذكاء اصطناعي متكاملة، ونشر النماذج باستخدام TensorFlow وPyTorch، والمساهمة في البحث الأكاديمي وتكامل الأنظمة الكاملة.">Machine Learning Engineer and Software Developer skilled in deep learning, NLP, and computer vision. Experienced in building end-to-end AI systems, deploying models with TensorFlow/PyTorch, and contributing to academic research and full-stack integration.</p>
+                                <p class="fs-5 text-secondary lh-lg mb-4"
+                                    data-en="Machine Learning Engineer and Software Developer skilled in deep learning, NLP, and computer vision. Experienced in building end-to-end AI systems, deploying models with TensorFlow/PyTorch, and contributing to academic research and full-stack integration."
+                                    data-ar="مهندس تعلم آلي ومطوّر برمجيات ماهر في التعلم العميق، ومعالجة اللغة الطبيعية، ورؤية الحاسوب. يتمتع بخبرة في بناء أنظمة ذكاء اصطناعي متكاملة، ونشر النماذج باستخدام TensorFlow وPyTorch، والمساهمة في البحث الأكاديمي وتكامل الأنظمة الكاملة.">
+                                    Machine Learning Engineer and Software Developer skilled in deep learning, NLP, and
+                                    computer vision. Experienced in building end-to-end AI systems, deploying models
+                                    with TensorFlow/PyTorch, and contributing to academic research and full-stack
+                                    integration.</p>
                                 <div class="row g-3">
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 64px; height: 64px;">
-                                            <i class="fas fa-star text-white"></i>
+                                    <div class="col-6 col-md-3 text-center animate-bounce-in" style="animation-delay: 0.1s;">
+                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2"
+                                            style="width: 64px; height: 64px;">
+                                            <i class="fas fa-brain text-white"></i>
                                         </div>
                                         <small class="fw-medium">Machine Learning Engineer</small>
                                     </div>
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 64px; height: 64px;">
-                                            <i class="fas fa-star text-white"></i>
+                                    <div class="col-6 col-md-3 text-center animate-bounce-in" style="animation-delay: 0.2s;">
+                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2"
+                                            style="width: 64px; height: 64px;">
+                                            <i class="fas fa-robot text-white"></i>
                                         </div>
                                         <small class="fw-medium">AI Engineer</small>
                                     </div>
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 64px; height: 64px;">
-                                            <i class="fas fa-star text-white"></i>
+                                    <div class="col-6 col-md-3 text-center animate-bounce-in" style="animation-delay: 0.3s;">
+                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2"
+                                            style="width: 64px; height: 64px;">
+                                            <i class="fas fa-code text-white"></i>
                                         </div>
                                         <small class="fw-medium">Software Developer</small>
                                     </div>
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 64px; height: 64px;">
-                                            <i class="fas fa-star text-white"></i>
+                                    <div class="col-6 col-md-3 text-center animate-bounce-in" style="animation-delay: 0.4s;">
+                                        <div class="rounded-circle btn-gradient d-flex align-items-center justify-content-center mx-auto mb-2"
+                                            style="width: 64px; height: 64px;">
+                                            <i class="fas fa-microscope text-white"></i>
                                         </div>
                                         <small class="fw-medium">Researcher</small>
                                     </div>
@@ -357,8 +776,9 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="section">
         <div class="container py-5">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5 animate-slide-up">
                 <h2 class="display-2 fw-bold hero-text mb-4" data-en="My Projects" data-ar="مشاريعي">Projects</h2>
+                <p class="fs-5 text-secondary mb-4" data-en="Explore my latest work and innovative solutions" data-ar="اكتشف أحدث أعمالي والحلول المبتكرة">Explore my latest work and innovative solutions</p>
                 <div class="bg-gradient rounded mx-auto" style="width: 96px; height: 4px;"></div>
             </div>
             <div class="row g-4" id="projectsContainer">
@@ -372,65 +792,94 @@
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="text-center mb-5">
-                        <h2 class="display-2 fw-bold hero-text mb-4" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</h2>
-                        <p class="fs-5 text-secondary" data-en="Let's work together to bring your ideas to life!" data-ar="دعنا نعمل معاً لتحويل أفكارك إلى واقع!">Let's work together to bring your ideas to life!</p>
+                    <div class="text-center mb-5 animate-slide-up">
+                        <h2 class="display-2 fw-bold hero-text mb-4" data-en="Get In Touch" data-ar="تواصل معي">Get In
+                            Touch
+                        </h2>
+                        <p class="fs-5 text-secondary" data-en="Let's work together to bring your ideas to life!"
+                            data-ar="دعنا نعمل معاً لتحويل أفكارك إلى واقع!">Let's work together to bring your ideas to
+                            life!
+                        </p>
                         <div class="bg-gradient rounded mx-auto mt-4" style="width: 96px; height: 4px;"></div>
                     </div>
                     <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="card-custom rounded-4 p-4 shadow-lg card-hover h-100">
-                                <div class="d-flex align-items-center mb-4">
-                                    <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
-                                        <i class="fas fa-envelope text-white"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1 fw-bold" data-en="Email" data-ar="البريد الإلكتروني">Email</h5>
-                                        <p class="mb-1" style="font-weight: 500;">ashiekh295@gmail.com</p>
-                                    </div>
+                        <!-- Contact Info Card -->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card-custom rounded-4 p-4 shadow-lg card-hover project-card h-100 animate-scale-in" style="animation-delay: 0.1s;">
+                                <div class="project-icon mx-auto" style="width: 64px; height: 64px;">
+                                    <i class="fas fa-address-card text-white fs-4"></i>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
-                                        <i class="fas fa-phone text-white"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1 fw-bold" data-en="Phone" data-ar="الهاتف">Phone</h5>
-                                        <p class="mb-1" style="font-weight: 500;">+254114529577</p>
-                                    </div>
+                                <h5 class="fw-bold mb-3 text-center" data-en="Contact Information" data-ar="معلومات التواصل">Contact Information</h5>
+                                <div class="d-flex flex-column align-items-center">
+                                                                         <div class="d-flex align-items-center mb-3" style="width: 100%; max-width: 350px;">
+                                         <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center me-3"
+                                             style="width: 48px; height: 48px; flex-shrink: 0;">
+                                             <i class="fas fa-envelope text-white fs-5"></i>
+                                         </div>
+                                         <div class="text-start flex-grow-1">
+                                             <small class="fw-medium text-secondary fs-6" data-en="Email" data-ar="البريد الإلكتروني">Email</small>
+                                             <p class="mb-0 fw-bold" style="font-size: 1rem;">ashiekh295@gmail.com</p>
+                                         </div>
+                                     </div>
+                                     <div class="d-flex align-items-center" style="width: 100%; max-width: 350px;">
+                                         <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center me-3"
+                                             style="width: 48px; height: 48px; flex-shrink: 0;">
+                                             <i class="fas fa-phone text-white fs-5"></i>
+                                         </div>
+                                         <div class="text-start flex-grow-1">
+                                             <small class="fw-medium text-secondary fs-6" data-en="Phone" data-ar="الهاتف">Phone</small>
+                                             <p class="mb-0 fw-bold" style="font-size: 1rem;">+254114529577</p>
+                                         </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card-custom rounded-4 p-4 shadow-lg card-hover h-100">
-                                <a href="https://www.linkedin.com/in/ahmed-shiekh-kenya" class="text-decoration-none d-flex align-items-center mb-4">
-                                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px; background: #0077b5;">
-                                        <i class="fab fa-linkedin text-white"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1 fw-bold">LinkedIn</h5>
-                                        <p class="mb-1" style="font-weight: 500;">linkedin.com/in/ahmed-shiekh-kenya</p>
-                                    </div>
-                                </a>
-                                <a href="https://github.com/Ah93" class="text-decoration-none d-flex align-items-center">
-                                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px; background: #333;">
-                                        <i class="fab fa-github text-white"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1 fw-bold">GitHub</h5>
-                                        <p class="mb-1" style="font-weight: 500; word-break: break-all;">
-												https://github.com/Ah93
-											</p>
-                                    </div>
-                                </a>
+
+                        <!-- Social Media Card -->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card-custom rounded-4 p-4 shadow-lg card-hover project-card h-100 animate-scale-in" style="animation-delay: 0.2s;">
+                                <div class="project-icon mx-auto" style="width: 64px; height: 64px;">
+                                    <i class="fas fa-share-alt text-white fs-4"></i>
+                                </div>
+                                <h5 class="fw-bold mb-3 text-center" data-en="Social Media" data-ar="وسائل التواصل الاجتماعي">Social Media</h5>
+                                <div class="d-flex flex-column gap-3">
+                                    <a href="https://www.linkedin.com/in/ahmed-shiekh-kenya" target="_blank"
+                                        class="text-decoration-none d-flex align-items-center p-3 rounded-3 contact-link">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                                            style="width: 48px; height: 48px; background: #0077b5;">
+                                            <i class="fab fa-linkedin text-white fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1 fw-bold">LinkedIn</h6>
+                                            <small class="text-secondary">ahmed-shiekh-kenya</small>
+                                        </div>
+                                    </a>
+                                    <a href="https://github.com/Ah93" target="_blank"
+                                        class="text-decoration-none d-flex align-items-center p-3 rounded-3 contact-link">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center me-3"
+                                            style="width: 48px; height: 48px; background: #333;">
+                                            <i class="fab fa-github text-white fs-5"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1 fw-bold">GitHub</h6>
+                                            <small class="text-secondary">Ah93</small>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+
                     </div>
-                    <div class="text-center mt-5">
-                        <a href="Ahmed_Sheikh_CV.pdf" download class="btn btn-lg px-5 py-3 rounded-pill text-white text-decoration-none"
-   style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none;">
-   <i class="fas fa-download me-2"></i><span data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</span>
-</a>
+
+                    <!-- Download CV Section -->
+                    <div class="text-center mt-5 animate-slide-up" style="animation-delay: 0.3s;">
+                        <a href="Ahmed_Sheikh_CV.pdf" download
+                            class="btn btn-gradient btn-lg px-5 py-3 rounded-pill text-decoration-none">
+                            <i class="fas fa-download me-3"></i>
+                            <span data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</span>
+                        </a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -459,106 +908,118 @@
         let currentSection = 'home';
 
         const translations = {
-    en: {
-        projects: [
-            {
-                title: "EduMath 📚",
-                tech: "Next.js, React.js, Tailwind CSS, Gemini AI",
-                description: "An interactive math learning web app for primary school children to learn Addition, Subtraction, Multiplication, and Division in a fun, gamified way. Features include quizzes, slides, performance summaries, and feedback.",
-                demo: "https://math-learning-kvv0mskof-ah93s-projects.vercel.app/"
+            en: {
+                projects: [
+                    {
+                        title: "EduMath 📚",
+                        tech: "Next.js, React.js, Tailwind CSS, Gemini AI",
+                        description: "An interactive math learning web app for primary school children to learn Addition, Subtraction, Multiplication, and Division in a fun, gamified way. Features include quizzes, slides, performance summaries, and feedback.",
+                        demo: "https://math-learning-kvv0mskof-ah93s-projects.vercel.app/"
+                    },
+                    {
+                        title: "HR Resume Analyzer 🧠",
+                        tech: "Next.js, React.js, Tailwind CSS, Gemini AI",
+                        description: "An AI-powered HR tool that analyzes resumes, highlights strengths and weaknesses, generates custom interview questions, and exports PDF summaries for quick candidate review.",
+                        demo: "https://hr-resume-analyzer.vercel.app/"
+                    },
+                    {
+                        "title": "Podcast Search 🔍",
+                        "tech": "Next.js, React.js, Tailwind CSS, Vercel, AWS DynamoDB, AWS EC2",
+                        "description": "A web app that allows users to discover and explore Arabic podcasts from a large library. Features include episode queuing and a clean, minimalist interface for an optimal listening experience.",
+                        "demo": "https://thamaniyah-podcast-search.vercel.app/"
+                    },
+                    {
+                        title: "MoodReads 📖",
+                        tech: "TensorFlow, Keras, Self-Attention, Gradio, Python",
+                        description: "An emotion-based book recommendation app that predicts a user's emotional state from text input using a custom deep learning model with Self-Attention and suggests relevant books by comparing emotion vectors with cosine similarity. Deployed via Gradio with a sleek, responsive UI.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/MoodReads"
+                    },
+                    {
+                        title: "Arabic Accent Classifier 🎙️",
+                        tech: "Python, SpeechBrain, Hugging Face Spaces",
+                        description: "An interactive web app that uses deep learning to classify Arabic speech into dialects such as Gulf, Egyptian, Levantine, and Iraqi based on uploaded audio. Built with SpeechBrain ECAPA model and deployed on Hugging Face Spaces.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/arabic-accent-classifier"
+                    },
+                    {
+                        title: "English Accent Classifier 🎤",
+                        tech: "Python, Machine Learning, SpeechBrain ECAPA, Streamlit",
+                        description: "A Streamlit web app hosted on Hugging Face Spaces that classifies English accents from video URLs using real-time audio extraction and the ECAPA model.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/eng-accent-classifier"
+                    },
+                    {
+                        title: "Fake News Detection 📰",
+                        tech: "Python, Transformer-BiGRU, NLP, Streamlit",
+                        description: "A fake news detection app using a Transformer-BiGRU model with NLP preprocessing and real-time user input classification. Achieves 89% overall accuracy.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/fake-news-detection"
+                    },
+                    {
+                        title: "Predicting Hotel Revenue 📈",
+                        tech: "Python, XGBoost, Streamlit",
+                        description: "An interactive Streamlit app that uses machine learning and data analysis to predict hotel revenue with real-time forecasting capabilities.",
+                        demo: "https://hotel-revenue-prediction-app-2toj3zsxappjt9hxgwfqyd9.streamlit.app/"
+                    }
+                ]
             },
-            {
-                title: "HR Resume Analyzer 🧠",
-                tech: "Next.js, React.js, Tailwind CSS, Gemini AI",
-                description: "An AI-powered HR tool that analyzes resumes, highlights strengths and weaknesses, generates custom interview questions, and exports PDF summaries for quick candidate review.",
-                demo: "https://hr-resume-analyzer.vercel.app/"
-            },
-			{
-				title: "MoodReads 📖",
-				tech: "TensorFlow, Keras, Self-Attention, Gradio, Python",
-				description: "An emotion-based book recommendation app that predicts a user's emotional state from text input using a custom deep learning model with Self-Attention and suggests relevant books by comparing emotion vectors with cosine similarity. Deployed via Gradio with a sleek, responsive UI.",
-				demo: "https://huggingface.co/spaces/Ahmedsh93/MoodReads"
-			},
-			{
-				title: "Arabic Accent Classifier 🎙️",
-				tech: "Python, SpeechBrain, Hugging Face Spaces",
-				description: "An interactive web app that uses deep learning to classify Arabic speech into dialects such as Gulf, Egyptian, Levantine, and Iraqi based on uploaded audio. Built with SpeechBrain ECAPA model and deployed on Hugging Face Spaces.",
-				demo: "https://huggingface.co/spaces/Ahmedsh93/arabic-accent-classifier"
-			},
-            {
-                title: "English Accent Classifier 🎤",
-                tech: "Python, Machine Learning, SpeechBrain ECAPA, Streamlit",
-                description: "A Streamlit web app hosted on Hugging Face Spaces that classifies English accents from video URLs using real-time audio extraction and the ECAPA model.",
-                demo: "https://huggingface.co/spaces/Ahmedsh93/eng-accent-classifier"
-            },
-            {
-                title: "Fake News Detection 📰",
-                tech: "Python, Transformer-BiGRU, NLP, Streamlit",
-                description: "A fake news detection app using a Transformer-BiGRU model with NLP preprocessing and real-time user input classification. Achieves 89% overall accuracy.",
-                demo: "https://huggingface.co/spaces/Ahmedsh93/fake-news-detection"
-            },
-            {
-                title: "Predicting Hotel Revenue 📈",
-                tech: "Python, XGBoost, Streamlit",
-                description: "An interactive Streamlit app that uses machine learning and data analysis to predict hotel revenue with real-time forecasting capabilities.",
-                demo: "https://hotel-revenue-prediction-app-2toj3zsxappjt9hxgwfqyd9.streamlit.app/"
+            ar: {
+                projects: [
+                    {
+                        title: "إديو ماث 📚",
+                        tech: "Next.js، React.js، Tailwind CSS، Gemini API",
+                        description: "تطبيق ويب تفاعلي لتعليم الرياضيات للأطفال في المرحلة الابتدائية بطريقة مبسطة ومسلية من خلال الألعاب والشرائح والاختبارات والتغذية الراجعة.",
+                        demo: "https://math-learning-kvv0mskof-ah93s-projects.vercel.app/"
+                    },
+                    {
+                        title: "محلل السير الذاتية للموارد البشرية 🧠",
+                        tech: "Next.js، React.js، Tailwind CSS، Gemini API",
+                        description: "أداة ذكية تساعد فرق الموارد البشرية على تحليل السير الذاتية، وتحديد نقاط القوة والضعف، وإنشاء أسئلة مقابلات مخصصة وتوليد تقارير PDF.",
+                        demo: "https://hr-resume-analyzer.vercel.app/"
+                    },
+                    {
+                        "title": "بحث البودكاست 🔍",
+                        "tech": "Next.js, React.js, Tailwind CSS, Vercel, AWS DynamoDB, AWS EC2",
+                        "description": "تطبيق ويب يتيح للمستخدمين اكتشاف واستكشاف البودكاست العربية من مكتبة كبيرة. يشمل ميزات مثل قائمة انتظار الحلقات وواجهة بسيطة ونظيفة لتجربة استماع مثالية.",
+                        "demo": "https://thamaniyah-podcast-search.vercel.app/"
+                    },
+                    {
+                        title: "قراءة المزاج 📖",
+                        tech: "TensorFlow، Keras، Self-Attention، Gradio، Python",
+                        description: "تطبيق توصية بالكتب بناءً على المشاعر. يتنبأ بالحالة العاطفية للمستخدم من خلال النص المدخل باستخدام نموذج تعلم عميق مخصص يحتوي على آلية Self-Attention، ثم يقترح كتبًا متوافقة عاطفيًا باستخدام تشابه كوزاين. يتميز بواجهة أنيقة باستخدام Gradio.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/MoodReads"
+                    },
+                    {
+                        title: "مصنف اللهجات العربية 🎙️",
+                        tech: "بايثون، SpeechBrain، Hugging Face Spaces",
+                        description: "تطبيق ويب تفاعلي يستخدم التعلم العميق لتصنيف الكلام العربي إلى لهجات مثل الخليجية والمصرية والشامية والعراقية بناءً على الملفات الصوتية المرفوعة. تم بناؤه باستخدام نموذج ECAPA من SpeechBrain ونشره على منصة Hugging Face Spaces.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/arabic-accent-classifier"
+                    },
+                    {
+                        title: "مصنف اللكنات الإنجليزية 🎤",
+                        tech: "Python، Machine Learning، ECAPA، Streamlit",
+                        description: "تطبيق Streamlit يستخرج الصوت من روابط الفيديو ويحدد اللكنة الإنجليزية باستخدام نموذج ECAPA المتقدم.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/eng-accent-classifier"
+                    },
+                    {
+                        title: "كشف الأخبار المزيفة 📰",
+                        tech: "Python، Transformer-BiGRU، NLP، Streamlit",
+                        description: "تطبيق لتحليل الأخبار وتحديد ما إذا كانت مزيفة باستخدام نموذج Transformer-BiGRU بدقة تصل إلى 89٪.",
+                        demo: "https://huggingface.co/spaces/Ahmedsh93/fake-news-detection"
+                    },
+                    {
+                        title: "توقع إيرادات الفنادق 📈",
+                        tech: "Python، XGBoost، Streamlit",
+                        description: "تطبيق تفاعلي لتحليل البيانات وتوقع إيرادات الفنادق باستخدام التعلم الآلي في الوقت الفعلي.",
+                        demo: "https://hotel-revenue-prediction-app-2toj3zsxappjt9hxgwfqyd9.streamlit.app/"
+                    }
+                ]
             }
-        ]
-    },
-    ar: {
-        projects: [
-            {
-                title: "إديو ماث 📚",
-                tech: "Next.js، React.js، Tailwind CSS، Gemini API",
-                description: "تطبيق ويب تفاعلي لتعليم الرياضيات للأطفال في المرحلة الابتدائية بطريقة مبسطة ومسلية من خلال الألعاب والشرائح والاختبارات والتغذية الراجعة.",
-                demo: "https://math-learning-kvv0mskof-ah93s-projects.vercel.app/"
-            },
-            {
-                title: "محلل السير الذاتية للموارد البشرية 🧠",
-                tech: "Next.js، React.js، Tailwind CSS، Gemini API",
-                description: "أداة ذكية تساعد فرق الموارد البشرية على تحليل السير الذاتية، وتحديد نقاط القوة والضعف، وإنشاء أسئلة مقابلات مخصصة وتوليد تقارير PDF.",
-                demo: "https://hr-resume-analyzer.vercel.app/"
-            },
-			{
-				title: "قراءة المزاج 📖",
-				tech: "TensorFlow، Keras، Self-Attention، Gradio، Python",
-				description: "تطبيق توصية بالكتب بناءً على المشاعر. يتنبأ بالحالة العاطفية للمستخدم من خلال النص المدخل باستخدام نموذج تعلم عميق مخصص يحتوي على آلية Self-Attention، ثم يقترح كتبًا متوافقة عاطفيًا باستخدام تشابه كوزاين. يتميز بواجهة أنيقة باستخدام Gradio.",
-				demo: "https://huggingface.co/spaces/Ahmedsh93/MoodReads"
-			},
-			{
-				title: "مصنف اللهجات العربية 🎙️",
-				tech: "بايثون، SpeechBrain، Hugging Face Spaces",
-				description: "تطبيق ويب تفاعلي يستخدم التعلم العميق لتصنيف الكلام العربي إلى لهجات مثل الخليجية والمصرية والشامية والعراقية بناءً على الملفات الصوتية المرفوعة. تم بناؤه باستخدام نموذج ECAPA من SpeechBrain ونشره على منصة Hugging Face Spaces.",
-				demo: "https://huggingface.co/spaces/Ahmedsh93/arabic-accent-classifier"
-			},
-            {
-                title: "مصنف اللكنات الإنجليزية 🎤",
-                tech: "Python، Machine Learning، ECAPA، Streamlit",
-                description: "تطبيق Streamlit يستخرج الصوت من روابط الفيديو ويحدد اللكنة الإنجليزية باستخدام نموذج ECAPA المتقدم.",
-                demo: "https://huggingface.co/spaces/Ahmedsh93/eng-accent-classifier"
-            },
-            {
-                title: "كشف الأخبار المزيفة 📰",
-                tech: "Python، Transformer-BiGRU، NLP، Streamlit",
-                description: "تطبيق لتحليل الأخبار وتحديد ما إذا كانت مزيفة باستخدام نموذج Transformer-BiGRU بدقة تصل إلى 89٪.",
-                demo: "https://huggingface.co/spaces/Ahmedsh93/fake-news-detection"
-            },
-            {
-                title: "توقع إيرادات الفنادق 📈",
-                tech: "Python، XGBoost، Streamlit",
-                description: "تطبيق تفاعلي لتحليل البيانات وتوقع إيرادات الفنادق باستخدام التعلم الآلي في الوقت الفعلي.",
-                demo: "https://hotel-revenue-prediction-app-2toj3zsxappjt9hxgwfqyd9.streamlit.app/"
-            }
-        ]
-    }
-};
+        };
 
-https://huggingface.co/spaces/Ahmedsh93/MoodReads
+        https://huggingface.co/spaces/Ahmedsh93/MoodReads
         // Theme toggle
         function toggleTheme() {
             currentTheme = currentTheme === 'light' ? 'dark' : 'light';
             document.body.setAttribute('data-theme', currentTheme);
-            
+
             const themeBtn = document.getElementById('themeBtn');
             themeBtn.innerHTML = currentTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
         }
@@ -568,10 +1029,10 @@ https://huggingface.co/spaces/Ahmedsh93/MoodReads
             currentLang = currentLang === 'en' ? 'ar' : 'en';
             document.documentElement.setAttribute('lang', currentLang);
             document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            
+
             const langBtn = document.getElementById('langBtn');
             langBtn.textContent = currentLang === 'en' ? 'عربي' : 'EN';
-            
+
             updateTexts();
             renderProjects();
         }
@@ -591,11 +1052,11 @@ https://huggingface.co/spaces/Ahmedsh93/MoodReads
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            
+
             // Show target section
             document.getElementById(sectionId).classList.add('active');
             currentSection = sectionId;
-            
+
             // Update navigation states
             document.querySelectorAll('.nav-link-custom').forEach(link => {
                 link.classList.remove('active');
@@ -603,40 +1064,131 @@ https://huggingface.co/spaces/Ahmedsh93/MoodReads
             document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
             document.querySelector(`.mobile-nav-btn[data-section="${sectionId}"]`).classList.add('active');
+        }
+
+        // Project icons mapping
+        const projectIcons = {
+            'EduMath': 'fas fa-calculator',
+            'HR Resume Analyzer': 'fas fa-user-tie',
+            'Podcast Search': 'fas fa-podcast',
+            'MoodReads': 'fas fa-book-open',
+            'Arabic Accent Classifier': 'fas fa-language',
+            'English Accent Classifier': 'fas fa-microphone',
+            'Fake News Detection': 'fas fa-newspaper',
+            'Predicting Hotel Revenue': 'fas fa-chart-line',
+            'إديو ماث': 'fas fa-calculator',
+            'محلل السير الذاتية للموارد البشرية': 'fas fa-user-tie',
+            'بحث البودكاست': 'fas fa-podcast',
+            'قراءة المزاج': 'fas fa-book-open',
+            'مصنف اللهجات العربية': 'fas fa-language',
+            'مصنف اللكنات الإنجليزية': 'fas fa-microphone',
+            'كشف الأخبار المزيفة': 'fas fa-newspaper',
+            'توقع إيرادات الفنادق': 'fas fa-chart-line'
+        };
+
+        // Get project icon
+        function getProjectIcon(title) {
+            return projectIcons[title] || 'fas fa-code';
         }
 
         // Render projects
         function renderProjects() {
             const projectsContainer = document.getElementById('projectsContainer');
             const projects = translations[currentLang].projects;
-            
-            projectsContainer.innerHTML = projects.map((project, index) => `
-                <div class="col-lg-4 col-md-6">
-                    <div class="card-custom rounded-4 p-4 shadow-lg card-hover project-card h-100" style="animation-delay: ${index * 0.2}s;">
-                        <div class="rounded-circle gradient-bg d-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
-                            <i class="fas fa-code text-white fs-4"></i>
-                        </div>
-                        <h4 class="fw-bold mb-2">${project.title}</h4>
-                        <p class="text-primary fw-medium mb-3">${project.tech}</p>
-                        <p class="text-secondary mb-4">${project.description}</p>
-                        <div class="d-flex gap-2 mt-auto">
-                            <a href="${project.demo}" target="_blank" class="btn btn-gradient btn-sm text-decoration-none">
-    <i class="fas fa-external-link-alt me-1"></i>Demo
-</a>
 
+            projectsContainer.innerHTML = projects.map((project, index) => {
+                const icon = getProjectIcon(project.title);
+                const techArray = project.tech.split(', ');
+                
+                return `
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card-custom rounded-4 p-4 shadow-lg card-hover project-card h-100 animate-scale-in" 
+                             style="animation-delay: ${index * 0.1}s;">
+                            <div class="project-icon mx-auto">
+                                <i class="${icon} text-white fs-3"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3 text-center">${project.title}</h4>
+                            <div class="project-tech-tags justify-content-center">
+                                ${techArray.map(tech => `<span class="tech-tag">${tech.trim()}</span>`).join('')}
+                            </div>
+                            <p class="text-secondary mb-4 text-center">${project.description}</p>
+                            <div class="d-flex justify-content-center mt-auto" style="position: relative; z-index: 10;">
+                                <a href="${project.demo}" target="_blank" class="btn btn-gradient btn-sm text-decoration-none demo-link" 
+                                   style="position: relative; z-index: 10;" 
+                                   onclick="console.log('Demo link clicked:', '${project.title}')">
+                                    <i class="fas fa-external-link-alt me-2"></i>
+                                    <span data-en="Live Demo" data-ar="عرض مباشر">Live Demo</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
+
+            // Add click event listeners to demo links after rendering
+            setTimeout(() => {
+                document.querySelectorAll('.demo-link').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        console.log('Demo link clicked via event listener:', this.href);
+                        // Ensure the link opens in a new tab
+                        window.open(this.href, '_blank');
+                        e.preventDefault();
+                    });
+                    console.log('Event listener added to:', link.href);
+                });
+            }, 100);
+        }
+
+        // Create particle effect
+        function createParticles() {
+            const heroSection = document.querySelector('.hero-section');
+            if (!heroSection) return;
+
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heroSection.appendChild(particle);
+            }
+        }
+
+        // Create custom cursor effect
+        function createCustomCursor() {
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor-glow';
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+
+            // Add hover effect for interactive elements (excluding project cards to avoid interference)
+            document.querySelectorAll('a, button, .card-custom').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(2)';
+                    cursor.style.background = 'radial-gradient(circle, rgba(102, 126, 234, 1) 0%, transparent 70%)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.background = 'radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, transparent 70%)';
+                });
+            });
         }
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             renderProjects();
-            
+            createParticles();
+            createCustomCursor();
+
             // Add stagger animation to elements
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -649,7 +1201,24 @@ https://huggingface.co/spaces/Ahmedsh93/MoodReads
             document.querySelectorAll('.card-custom, .project-card').forEach(el => {
                 observer.observe(el);
             });
+
+            // Add scroll-triggered animations
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-slide-up, .animate-scale-in, .animate-bounce-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                scrollObserver.observe(el);
+            });
         });
     </script>
 </body>
+
 </html>
